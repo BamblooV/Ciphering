@@ -7,13 +7,13 @@ const { Rot8Stream } = require('./Streams/rot8Stream.js');
 const { AtbahStream } = require('./Streams/atbashStream.js');
 const { ReadStream } = require('./Streams/ReadStream.js');
 const { WriteStream } = require('./Streams/WriteStream.js');
+const { error } = require('console');
 
 let input_stream;
 if (input) {
   try {
-  const existFile = fs.existsSync(path.join(__dirname, input));
   const accesFile = fs.accessSync(path.join(__dirname, input));
-  if (existFile && !accesFile) input_stream = new ReadStream(path.join(__dirname, input));
+  if (!accesFile) input_stream = new ReadStream(path.join(__dirname, input));
 }
   catch (error) {
     process.stderr.write('Input file don`t exist or read-only');
@@ -26,9 +26,8 @@ if (input) {
 let output_stream;
 if (output) {
   try {
-    const existFile = fs.existsSync(path.join(__dirname, output));
     const accesFile = fs.accessSync(path.join(__dirname, output));
-    if (existFile && !accesFile) output_stream = new WriteStream(path.join(__dirname, output));
+    if (!accesFile) output_stream = new WriteStream(path.join(__dirname, output));
   } catch (error) {
     process.stderr.write('Output file don`t exist or read-only');
     process.exit(1);
