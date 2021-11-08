@@ -10,11 +10,12 @@ const { WriteStream } = require('./Streams/WriteStream.js');
 
 let input_stream;
 if (input) {
+  try {
   const existFile = fs.existsSync(path.join(__dirname, input));
   const accesFile = fs.accessSync(path.join(__dirname, input));
-  if (existFile && !accesFile) {
-    input_stream = new ReadStream(path.join(__dirname, input));
-  } else {
+  if (existFile && !accesFile) input_stream = new ReadStream(path.join(__dirname, input));
+}
+  catch (error) {
     process.stderr.write('Input file don`t exist or read-only');
     process.exit(1);
   }
@@ -24,11 +25,11 @@ if (input) {
 
 let output_stream;
 if (output) {
-  const existFile = fs.existsSync(path.join(__dirname, output));
-  const accesFile = fs.accessSync(path.join(__dirname, output));
-  if (existFile && !accesFile) {
-    output_stream = new WriteStream(path.join(__dirname, output))
-  } else {
+  try {
+    const existFile = fs.existsSync(path.join(__dirname, output));
+    const accesFile = fs.accessSync(path.join(__dirname, output));
+    if (existFile && !accesFile) output_stream = new WriteStream(path.join(__dirname, output));
+  } catch (error) {
     process.stderr.write('Output file don`t exist or read-only');
     process.exit(1);
   }
