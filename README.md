@@ -69,6 +69,7 @@ $ node ciphering -c "C1-R1-C0-C0-A-R0-R1-R1-A-C1" -i "./input.txt" -o "./output.
 $ node ciphering -c "C1-R1-C0-C0-A-R0-R1-R1-A-C1" -o "./output.txt"
 ```
 > text text
+
 > ctrl + c
 
 > output.txt
@@ -79,4 +80,5 @@ $ node ciphering -c "A-R0-R1-R1-A-C1"
 ```
 
 > ABC abc ZYX 1!
+
 > TUV tuv SRQ 1!
