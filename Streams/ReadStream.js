@@ -7,13 +7,13 @@ class ReadStream extends Readable {
     this.filename = filename;
     this.fd = null;
   }
-  _construct(callback) {
+  _construct(done) {
     fs.open(this.filename, (err, fd) => {
       if (err) {
-        callback(err);
+        done(err);
       } else {
         this.fd = fd;
-        callback();
+        done();
       }
     });
   }
@@ -27,11 +27,11 @@ class ReadStream extends Readable {
       }
     });
   }
-  _destroy(err, callback) {
+  _destroy(err, done) {
     if (this.fd) {
-      fs.close(this.fd, (er) => callback(er || err));
+      fs.close(this.fd, (er) => done(er || err));
     } else {
-      callback(err);
+      done(err);
     }
   }
 }

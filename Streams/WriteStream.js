@@ -6,24 +6,24 @@ class WriteStream extends Writable {
     super();
     this.filename = filename;
   }
-  _construct(callback) {
+  _construct(done) {
     fs.open(this.filename, 'a', (err, fd) => {
       if (err) {
-        callback(err);
+        done(err);
       } else {
         this.fd = fd;
-        callback();
+        done();
       }
     });
   }
-  _write(chunk, encoding, callback) {
-    fs.appendFile(this.fd, chunk, callback);
+  _write(chunk, encoding, done) {
+    fs.appendFile(this.fd, chunk, done);
   }
-  _destroy(err, callback) {
+  _destroy(err, done) {
     if (this.fd) {
-      fs.close(this.fd, (er) => callback(er || err));
+      fs.close(this.fd, (er) => done(er || err));
     } else {
-      callback(err);
+      done(err);
     }
   }
 }
