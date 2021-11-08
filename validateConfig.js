@@ -47,7 +47,9 @@ if (consoleArgs.includes('-c')) {
     process.stderr.write(`Wrong config args, try 'C1-R1-A'`);
     process.exit(1);
   }
-
+} else {
+  process.stderr.write(`Wrong config args are necessary`);
+  process.exit(1);
 };
 
 if (consoleArgs.includes('-i')) {
