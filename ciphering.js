@@ -56,7 +56,7 @@ pipeline(
     if (error) {
       console.error(error);
     } else {
-      console.log('succeed');
+      console.log('The line was written successfully');
     }
   }
 )
