@@ -13,8 +13,8 @@ let input_stream;
 if (input) {
   try {
   const accesFile = fs.accessSync(path.join(__dirname, input));
-  if (!accesFile) input_stream = new ReadStream(path.join(__dirname, input));
-}
+  input_stream = new ReadStream(path.join(__dirname, input));
+  }
   catch (error) {
     process.stderr.write('Input file don`t exist or read-only');
     process.exit(1);
@@ -27,7 +27,7 @@ let output_stream;
 if (output) {
   try {
     const accesFile = fs.accessSync(path.join(__dirname, output));
-    if (!accesFile) output_stream = new WriteStream(path.join(__dirname, output));
+    output_stream = new WriteStream(path.join(__dirname, output));
   } catch (error) {
     process.stderr.write('Output file don`t exist or read-only');
     process.exit(1);
