@@ -9,7 +9,8 @@ class WriteStream extends Writable {
   _construct(done) {
     fs.open(this.filename, 'a', (err, fd) => {
       if (err) {
-        done(err);
+        process.stderr.write('Input file don`t exist or read-only');
+        process.exit(1);
       } else {
         this.fd = fd;
         done();
