@@ -18,8 +18,10 @@ if (consoleArgs.length == 0) {
   process.exit(1);
 }
 
+aliasesKeys = Object.keys(aliases)
+
 consoleArgs = consoleArgs.map(arg => {
-  if (Object.keys(aliases).includes(arg)) {
+  if (aliasesKeys.includes(arg)) {
     return aliases[arg];
   } else {
     return arg;

@@ -7,12 +7,11 @@ const { Rot8Stream } = require('./Streams/rot8Stream.js');
 const { AtbahStream } = require('./Streams/atbashStream.js');
 const { ReadStream } = require('./Streams/ReadStream.js');
 const { WriteStream } = require('./Streams/WriteStream.js');
-const { error } = require('console');
 
 let input_stream;
 if (input) {
   try {
-  const accesFile = fs.accessSync(path.join(__dirname, input));
+  fs.accessSync(path.join(__dirname, input));
   input_stream = new ReadStream(path.join(__dirname, input));
   }
   catch (error) {
@@ -26,7 +25,7 @@ if (input) {
 let output_stream;
 if (output) {
   try {
-    const accesFile = fs.accessSync(path.join(__dirname, output));
+    fs.accessSync(path.join(__dirname, output));
     output_stream = new WriteStream(path.join(__dirname, output));
   } catch (error) {
     process.stderr.write('Output file don`t exist');
@@ -54,7 +53,7 @@ pipeline(
   output_stream,
   (error) => {
     if (error) {
-      console.error(error);
+      console.error('Error in pipeline');
     } else {
       console.log('The line was written successfully');
     }
