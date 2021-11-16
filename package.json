@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/BamblooV/Ciphering/issues"
   },
-  "homepage": "https://github.com/BamblooV/Ciphering#readme"
+  "homepage": "https://github.com/BamblooV/Ciphering#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
 }
