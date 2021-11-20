@@ -19,5 +19,22 @@
   "homepage": "https://github.com/BamblooV/Ciphering#readme",
   "devDependencies": {
     "jest": "^27.3.1"
+  },
+  "jest": {
+    "collectCoverage": false,
+    "collectCoverageFrom": [
+      "**/*.js",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/coverage/**",
+      "**/CipheringAlgoritms/**",
+      "**/Streams/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 85,
+        "lines": 70
+      }
+    }
   }
 }
