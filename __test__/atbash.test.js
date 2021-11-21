@@ -8,6 +8,8 @@ describe('Atbash function', () => {
 
   test('should encode string properly', () => {
     expect(atbash(chunkIn)).toEqual(chunkOut);
+  });
+  test('should decode string', () => {
     expect(atbash(chunkOut)).toEqual(chunkIn);
   });
 });
