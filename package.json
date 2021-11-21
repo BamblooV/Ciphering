@@ -4,7 +4,8 @@
   "description": "",
   "main": "./ciphering.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,25 @@
   "bugs": {
     "url": "https://github.com/BamblooV/Ciphering/issues"
   },
-  "homepage": "https://github.com/BamblooV/Ciphering#readme"
+  "homepage": "https://github.com/BamblooV/Ciphering#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.js",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/coverage/**",
+      "**/CipheringAlgoritms/**",
+      "**/Streams/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 85,
+        "lines": 70
+      }
+    }
+  }
 }
